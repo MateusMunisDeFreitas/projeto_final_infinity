@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #000;
+    padding: 0 2% 0 2%;
+}
+header > .opcao, .operador{
+    display: flex;
+}
+
+.formulario_edicao > form{
+    z-index: 1;
+    position: absolute;
+    top: 30%;
+    padding: 7px 5px;
+    height: auto;
+    width: 30%;
+    border: 1px solid #777;
+    border-radius: .4rem;
+    box-shadow: 2px 2px 4px 0 #999;
+    display: flex;
+    flex-direction: column;
+}
+.formulario_edicao > form > label{
+    font-size: large;
+    font-weight: bolder;
+}
+.formulario_edicao > form > input{
+    margin-bottom: 10px;   
+    border-radius: .2rem;
+    border: .5px solid #555;
+}
+.formulario_edicao > form > input:focus{
+    border-color: blue;
+    outline: none;
+}
+.formulario_edicao > form > select:focus{
+    outline: none;
+}
+
+.formulario_edicao > form > button{
+    margin-top: 10px;
+}
