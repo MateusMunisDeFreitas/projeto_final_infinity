@@ -9,7 +9,7 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
     
-    if request.method == 'POST':
+    if request.method == 'POST': 
         nome = request.form['nome']
         senha = request.form['senha']
         user = db.session.query(Users).filter_by(nome=nome, senha=senha_cript(senha)).first()

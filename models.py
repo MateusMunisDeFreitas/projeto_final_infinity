@@ -9,7 +9,7 @@ class Users(UserMixin, db.Model):
     senha = db.Column(db.String())
     nivelAcesso = db.Column(db.String(50))
 
-class Resoucers(db.Model):
+class Resoucers(UserMixin, db.Model):
     __tablename__ = 'Recursos'
 
     id = db.Column(db.Integer(), primary_key=True)

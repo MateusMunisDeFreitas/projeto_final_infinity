@@ -13,36 +13,166 @@ header > .opcao, .operador{
     display: flex;
 }
 
-.formulario_edicao > form{
-    z-index: 1;
-    position: absolute;
-    top: 30%;
-    padding: 7px 5px;
-    height: auto;
+#logout{
+    color: #fff;
+}
+
+.formulario_edicao {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden; 
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease-in-out;
+}
+
+.formulario_edicao > form {
+    z-index: 2;
+    position: relative;
+    padding: 15px;
     width: 30%;
     border: 1px solid #777;
-    border-radius: .4rem;
+    border-radius: 0.4rem;
     box-shadow: 2px 2px 4px 0 #999;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
 }
-.formulario_edicao > form > label{
-    font-size: large;
+.formulario_edicao > form > input, select{
+    margin-bottom: 5px;
+}
+
+.formulario_edicao > form > #fechar_modal {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #9f0000;
+    border: none;
+    cursor: pointer;
+}
+
+.formulario_edicao.mostrar {
+    visibility: visible;
+    opacity: 1;
+}
+
+.formulario_recursos > fieldset{
+    padding: 5px 8px;
+    border: 1px solid #000;
+    border-radius: .4rem;
     font-weight: bolder;
-}
-.formulario_edicao > form > input{
-    margin-bottom: 10px;   
-    border-radius: .2rem;
-    border: .5px solid #555;
-}
-.formulario_edicao > form > input:focus{
-    border-color: blue;
-    outline: none;
-}
-.formulario_edicao > form > select:focus{
     outline: none;
 }
 
-.formulario_edicao > form > button{
-    margin-top: 10px;
+.formulario_recursos > fieldset > form > .nome_tipo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.formulario_recursos > fieldset > form > .nome_tipo > input{
+    width: 40%;
+    outline: none;
+    border-style: none;
+    border: 1px solid #555;
+    border-radius: .2rem;
+}
+
+.formulario_recursos > fieldset > form > .nome_tipo > input:focus{
+    border: 1px solid #009fff
+}
+
+.formulario_recursos > fieldset > form > .status_botao > select{
+    margin-right: 50%;
+}
+
+.formulario_recursos > fieldset > form > .status_botao > button{
+    outline: none;
+    border-style: none;
+    border: 1px solid #000;
+    border-radius: .3rem;
+    font-family: 'Arial';
+    font-weight: 700;
+    background-color: #999;
+}
+.formualrio_recursos > fieldset > form > .status_botao > button:hover{
+    background-color: #fff;
+    border: 1px solid #007fff;
+    color: #008fff;
+    box-shadow: 1px 1px 5px #555;
+}
+.formulario_recursos > fieldset > form > .status_botao > button:active{
+    background-color: #007fff;
+    color: #fff;
+}
+.formulario_edicao_recurso{
+    width: 40%;
+}
+.formulario_edicao_recurso > fieldset{
+    width: 25%;
+    z-index: 2;
+    position: absolute;
+    background-color: #fff;
+    left: 40%;
+    top: 30%;
+    border: 1px solid #000;
+    padding: 2px 5px;
+    border-radius: .3rem;
+    box-shadow: 4px 4px 3px #aaaaaa;
+}
+.formulario_edicao_recurso > fieldset > legend{
+    font-family: 'Arial';
+    font-weight: bold;
+}
+.formulario_edicao_recurso > fieldset > form{
+    display: flex;
+    justify-content: space-between;
+}
+.formulario_edicao_recurso > fieldset > form > button{
+    outline: none;
+    color: #fff;
+    border-style: none;
+    border: 1px solid #000;
+    border-radius: .3rem;
+    font-family: 'Arial';
+    font-weight: 700;
+    background-color: #999;
+}
+.formulario_edicao_recurso > fieldset > form > button:hover{
+    background-color: #fff;
+    border: 1px solid #007fff;
+    color: #008fff;
+    box-shadow: 1px 1px 5px #555;
+}
+.formulario_edicao_recurso > fieldset > form > button:active{
+    background-color: #007fff;
+    color: #fff;
+}
+.formulario_edicao_recurso.esconder{
+    display: none;
+}
+.formulario_edicao_recurso > fieldset > form > #fechar_formulario_edicao_recurso{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #9f0000;
+    border: none;
+    cursor: pointer;
 }
