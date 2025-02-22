@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/login.css">
     <title>Login</title>
 </head>
 <body>
-    <form action="/login" method="POST">
-        <h2>Nome</h2><br>
-        <input type="text" name="nome"> 
-        <h2>Senha</h2><br>
-        <input type="text" name="senha">
-        <button type="submit">login</button>
-        <a href="/logout"><button>logout</button></a>
-    </form>
+    <fieldset>
+        <form action="/login" method="POST" class="formulario_cadastro"> 
+            <div class="entrada">
+                <label>Nome</label>
+                <input type="text" name="nome" required> 
+                <label>Senha</label>
+                <input type="password" name="senha" required>
+            </div>
+            <div class="botoes">
+                <a href="#"><button type="submit">login</button></a>
+                <a id="but_cadastrar" href="/cadastrar">cadastrar</a>
+            </div>
+        </form>
+    </fieldset>
+
+    <script src="../static/js/home.js"></script>
 </body>
 </html>

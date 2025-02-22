@@ -4,7 +4,7 @@ from models import Users
 
 cadastrar_pg = Blueprint('cadastrar', __name__, template_folder='templates')
  
-@cadastrar_pg.route('/', methods=['GET', 'POST'])
+@cadastrar_pg.route('/', methods=['GET', 'POST']) 
 def cadastrar():
     if request.method == 'GET':
         return render_template('cadastrar.html')
@@ -23,5 +23,9 @@ def cadastrar():
             jsonify({'menssagem':'cadastrado com sucesso!'}), 201
             return redirect('/home')
         
-        jsonify({'menssagem':'Usuario ja existe!'})
-        return redirect('/cadastrar')
+        # jsonify({'menssagem':'Usuario ja cadastrado!!'})
+        # return redirect('/cadastrar')
+        return '''<script>
+                alert("Usuario ja cadastrado!")
+                window.location.replace("http://127.0.0.1:5000/cadastrar");
+            </script>'''

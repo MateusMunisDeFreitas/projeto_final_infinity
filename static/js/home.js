@@ -267,7 +267,7 @@ let elemento_html_dasoboard =
             <h1 class="h2">Status dos recursos da empresa</h1>
         </div>
           
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart">Seu navegador não suporte a renderização do grafico.</canvas>
         
     `;
 
@@ -314,6 +314,7 @@ document.addEventListener('click', async(e)=>{
         let message = await cadastrarRecurso(nome, tipo, status);
 
         alert(message.message);
+        main.innerHTML = await listaRecursos();
 
     } else if(e.target.id == 'botaoEditarRecurso'){
         let modal = document.querySelector('.formulario_edicao_recurso');
@@ -323,7 +324,8 @@ document.addEventListener('click', async(e)=>{
     } else if(e.target.id == 'fechar_formulario_edicao_recurso'){
         let modal = document.querySelector('.formulario_edicao_recurso');
         modal.classList.add('esconder');
-
+        
+        
     }else if(e.target.id == 'botao_edicao_status'){
         let status = document.querySelector('#selecao_novo_status').value;
         let message = await editarStatusRecurso(id_recurso_edicao, status);

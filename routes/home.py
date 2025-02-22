@@ -110,9 +110,9 @@ def lista_recursos(id):
         atualizar_recurso.status = dados['status']
         db.session.commit()
         return jsonify({'message':'Atualizado com sucesso!'}), 200
-    
+     
     if request.method == 'DELETE':
-        if current_user == 'funcionario': return jsonify({'message':'Somente administrador e gerente tem permisão!'}), 403
+        if current_user.nivelAcesso == 'funcionario': return jsonify({'message':'Somente administrador e gerente tem permisão!'}), 403
 
         recurso = db.session.query(Resoucers).get(id)
 

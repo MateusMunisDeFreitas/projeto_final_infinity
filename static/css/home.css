@@ -57,6 +57,22 @@ header > .opcao, .operador{
     margin-bottom: 5px;
 }
 
+#botao_atualizar_user{
+    margin-top: 5px;
+    color: #fff;
+    background-color: #008fff;
+}
+
+#botao_atualizar_user:hover{
+    background-color: #004494;
+    box-shadow: 0 0 1px 1px #999;
+}
+
+#botao_atualizar_user:active{
+    background-color: #555;
+    box-shadow: 0 0 5px 3px #fff;
+}
+
 .formulario_edicao > form > #fechar_modal {
     position: absolute;
     top: -10px;
@@ -139,6 +155,7 @@ header > .opcao, .operador{
     padding: 2px 5px;
     border-radius: .3rem;
     box-shadow: 4px 4px 3px #aaaaaa;
+    background-color: #999;
 }
 .formulario_edicao_recurso > fieldset > legend{
     font-family: 'Arial';
@@ -150,13 +167,13 @@ header > .opcao, .operador{
 }
 .formulario_edicao_recurso > fieldset > form > button{
     outline: none;
-    color: #fff;
+    color: #000;
     border-style: none;
     border: 1px solid #000;
     border-radius: .3rem;
     font-family: 'Arial';
     font-weight: 700;
-    background-color: #999;
+    background-color: #fff;
 }
 .formulario_edicao_recurso > fieldset > form > button:hover{
     background-color: #fff;

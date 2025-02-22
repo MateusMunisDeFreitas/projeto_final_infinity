@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/cadastrar.css">
     <title>cadastrar</title>
 </head>
 <body>
     <form action="/cadastrar" method="POST">
         <h2>Nome</h2><br>
-        <input type="text" name="nome">
+        <input type="text" name="nome" required>
         <h2>Senha</h2><br>
-        <input type="text" name="senha"><br>
-        <select name="option">
+        <input type="password" name="senha" required><br>
+        <select name="option" required>
             <option value="funcionario">funcionarios</option>
             <option value="gerente">gerente</option>
             <option value="administrador" >administrador</option>
         </select><br>
         <button type="submit">cadastrar</button>
-        <a href="/logout"><button>logout</button></a>
+        <a href="/login" id="but_login">login</a>
     </form>
-
+    
     <script src="../static/js/cadastrar.js"></script>
 </body>
 </html>
