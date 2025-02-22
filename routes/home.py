@@ -122,3 +122,20 @@ def lista_recursos(id):
         db.session.commit()
 
         return jsonify({'message':'Recurso deletado com sucesso!'}), 200
+    
+# ----------------- PAGINA DASHBORAD ----------------------------------
+@home_pg.route('/dashboard')
+# @login_required
+def dashborad():
+    if request.method == 'GET':
+        quant_disponivel = db.session.query(Resoucers).filter_by(status='Disponivel').all()
+        quant_nao_disponivel = db.session.query(Resoucers).filter_by(status='Não disponivel').all()
+        quant_em_manutencao = db.session.query(Resoucers).filter_by(status='Em manutenção').all()
+        quant_inoperante = db.session.query(Resoucers).filter_by(status='Inoperante').all()
+
+        return jsonify({
+            'quant_disponivel': len(quant_disponivel),
+            'quant_nao_disponivel': len(quant_nao_disponivel),
+            'quant_em_manutencao': len(quant_em_manutencao),
+            'quant_inoperante': len(quant_inoperante)
+        })

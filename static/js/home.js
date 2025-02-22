@@ -95,7 +95,18 @@ async function excluirRecurso(id) {
 
     return message;
 }
-// ----------------- HTML dinamico ------------------
+
+// -------- FUNCAO E HTML DAHSBOARD ------------------------
+async function exibirDashboard() {
+    let message = {};
+    await fetch('http://127.0.0.1:5000/home/dashboard')
+    .then((res)=> res.json())
+    .then((dados)=> message = dados)
+    .catch((e)=> console.error(e));
+
+    return message;
+}
+// ----------------- Pagina USUARIO HTML ------------------
 async function listaUsers(){
     let lista_usuarios = await listaDeUsuarios();
     let usuarios = lista_usuarios.map((e)=>{
@@ -150,6 +161,7 @@ let elemento_html_modal_user = () => {
 `;
 }
 
+// ------------------ Pagina RECURSOS HTML --------------------
 async function listaRecursos() {
     let lista_recursos = await listaDeRecursos();
     let recursos = lista_recursos.map((e) => {
@@ -157,7 +169,7 @@ async function listaRecursos() {
             <tr>
                 <td>${e.nome}</td>
                 <td>${e.tipo}</td>
-                <td>${e.status}</td>
+                <td>${e.status}</td> 
                 <td><button id="botaoEditarRecurso" value="${e.id}">Atualizar status</button>
                 <button id="botaoExcluirRecurso" value="${e.id}">Excluir</button></td>
             </tr>
@@ -247,7 +259,19 @@ let elemento_html_modal_recurso = `
         </fieldset>
         </div>
 `;
+// ------------------ Pagina DASHBOARD HTML --------------------
 
+let elemento_html_dasoboard =
+    `
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Status dos recursos da empresa</h1>
+        </div>
+          
+        <canvas id="myChart"></canvas>
+        
+    `;
+
+// EVENTOS DE CLICK'S DO HTML
 document.addEventListener('click', async(e)=>{
     // Funcoes de usuarios
     if(e.target.id == 'customers'){
@@ -312,5 +336,27 @@ document.addEventListener('click', async(e)=>{
 
         alert(message.message);
         main.innerHTML = await listaRecursos()
+    // Funcoes Dashboard
+    } else if(e.target.id == 'dashboard'){
+        let message = await exibirDashboard();
+        main.innerHTML = '';
+        main.innerHTML = elemento_html_dasoboard;
+
+        const ctx = document.getElementById('myChart');
+            
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+            datasets: [{
+                data: [message.quant_disponivel, message.quant_nao_disponivel, message.quant_em_manutencao, message.quant_inoperante    ]
+            }],
+            labels: [
+                'Disponivel',
+                'Não disponivel',
+                'Em manutenção',
+                'Inoperante'
+            ]
+        }
+        });
     }
 })
